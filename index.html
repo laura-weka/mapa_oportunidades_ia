@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa de Oportunidades con IA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>🌍 Mapa de Oportunidades con IA</h1>
+    <p>Oportunidades de negocio detectadas en ciudades de todo el mundo. Públicas para todos.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Publicar una oportunidad</h2>
+      <form id="form">
+        <div class="grid">
+          <label>Nombre<input name="name" required maxlength="120" placeholder="Ej: Asistente IA para taxis"></label>
+          <label>Ciudad<input name="city" required maxlength="80" placeholder="Madrid"></label>
+          <label>País<input name="country" required maxlength="80" placeholder="España"></label>
+          <label>Categoría
+            <select name="category" required>
+              <option>Transporte</option><option>Salud</option><option>Educación</option>
+              <option>Comercio</option><option>Turismo</option><option>Alimentación</option>
+              <option>Finanzas</option><option>Otro</option>
+            </select>
+          </label>
+          <label>Potencial
+            <select name="potential" required>
+              <option>Alto</option><option selected>Medio</option><option>Bajo</option>
+            </select>
+          </label>
+        </div>
+        <label>Problema<textarea name="problem" required maxlength="1000" rows="3" placeholder="¿Qué problema has detectado?"></textarea></label>
+        <label>Solución con IA<textarea name="ai_solution" required maxlength="1000" rows="3" placeholder="¿Cómo lo resolverías con IA?"></textarea></label>
+        <button type="submit" id="submit">Publicar</button>
+        <p id="msg" class="msg"></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Oportunidades <span id="count" class="badge">0</span></h2>
+      <div class="filters">
+        <input id="f-city" placeholder="Filtrar por ciudad">
+        <input id="f-country" placeholder="Filtrar por país">
+        <select id="f-category"><option value="">Todas las categorías</option></select>
+        <button id="reload" type="button" class="secondary">↻ Recargar</button>
+      </div>
+      <div id="list" class="list"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
